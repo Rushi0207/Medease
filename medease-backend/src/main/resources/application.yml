@@ -1,0 +1,52 @@
+spring:
+  application:
+    name: medease-backend
+  
+  # Database Configuration
+  datasource:
+    url: jdbc:h2:mem:medease
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  
+  # JPA Configuration
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  
+  # H2 Console (for development)
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+# Server Configuration
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+# JWT Configuration
+medease:
+  jwt:
+    secret: mySecretKey123456789012345678901234567890
+    expiration: 86400000 # 24 hours in milliseconds
+
+# CORS Configuration
+cors:
+  allowed-origins: http://localhost:3000,http://localhost:5173
+  allowed-methods: GET,POST,PUT,DELETE,OPTIONS
+  allowed-headers: "*"
+  allow-credentials: true
+
+# Logging
+logging:
+  level:
+    com.medease: DEBUG
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG
